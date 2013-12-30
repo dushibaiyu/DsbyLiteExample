@@ -1,4 +1,4 @@
-MyQtExample
+自己写的测试例子，记下便于遗忘后回忆
 ===========
 QFtpSeriesDown : QFtp断点下载
 
