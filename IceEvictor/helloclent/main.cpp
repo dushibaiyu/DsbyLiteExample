@@ -10,12 +10,15 @@ int main()
     try
     {
         Ice::CommunicatorPtr m_ic = Ice::initialize();
+        Ice::Identity id;
         Ice::ObjectPrx base
-                = m_ic->stringToProxy("hello2:default -h localhost -p 11111" );
+                = m_ic->stringToProxy("hello/php:default -h localhost -p 11111" );
         Demo::Printer3Prx m_prx = Demo::Printer3Prx::checkedCast(base);//::checkedCast(base);
         m_prx->printString("hello word!");
         m_prx->printString2("hello word!");
         m_prx->printString3("hello word!");
+//        Demo::PrintfPrx m_prx = Demo::PrintfPrx::checkedCast(base);
+//        m_prx->Printf.
     }
     catch(...)
     {

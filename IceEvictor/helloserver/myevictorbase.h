@@ -2,7 +2,7 @@
 #define MYEVICTORBASE_H
 
 #include "EvictorBase.h"
-#include "printeri.h"
+#include "printfi.h"
 //实现逐出器的功能
 class myEvictorBase : virtual public EvictorBase//逐出器
 {
@@ -22,10 +22,11 @@ myEvictorBase::myEvictorBase(int size)
 {
 }
 
-Ice::ObjectPtr myEvictorBase::add(const Ice::Current& , Ice::LocalObjectPtr&)//找不到事的添加动作
+Ice::ObjectPtr myEvictorBase::add(const Ice::Current& id , Ice::LocalObjectPtr&)//找不到事的添加动作
 {
-    PrinterI3ptr ptr =  new Printer3I;
-    return ptr;
+    //格式：category/name
+    std::cout << "facet : " << id.facet << "  IDname : " << id.id.name << " IDcategory : " << id.id.category << std::endl;
+    return  new Printer3I;
 }
 
 void myEvictorBase::evict(const Ice::ObjectPtr&, const Ice::LocalObjectPtr&)

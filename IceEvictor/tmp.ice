@@ -14,4 +14,10 @@ module Demo
 	{
 		void  printString3(string s);
 	};
+	class Printf
+	{
+		string vison();
+		Printer prt1;
+		Printer2 ptr2;
+	};
 };

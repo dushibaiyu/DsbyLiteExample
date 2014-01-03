@@ -1,4 +1,4 @@
-﻿// **********************************************************************
+// **********************************************************************
 //
 // Copyright (c) 2003-2013 ZeroC, Inc. All rights reserved.
 //
@@ -18,7 +18,7 @@
 // </auto-generated>
 //
 
-#include "tmp.h"
+#include <tmp.h>
 #include <Ice/LocalException.h>
 #include <Ice/ObjectFactory.h>
 #include <Ice/BasicStream.h>

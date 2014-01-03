@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ftp.login("test","test");
     ftp.rawCommand("SIZE test.txt");//得到文件大小
     ftp.get("test.txt",nullptr,2000);
-    connect(&ftp,&QFtp::rawCommandReply,[this](int a,const QString & str){
+    connect(&ftp,&QFtp::rawCommandReply,[this](int ,const QString & str){
         this->ui->textBrowser->append(str);
     });//执行命令的结果
     connect(&ftp,&QFtp::readyRead,[this](){
