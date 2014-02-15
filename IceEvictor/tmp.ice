@@ -1,4 +1,4 @@
-module Demo
+﻿module Demo
 {
 	interface Printer
 	{
@@ -10,11 +10,18 @@ module Demo
 		void  printString2(string s);
 	};
 	
+	interface callBack
+	{
+		void set(int i);
+	};
+	
 	interface Printer3 extends Printer,Printer2
 	{
 		void  printString3(string s);
+		void setInt(int j);
+		void setCall(callBack * cb);
 	};
-	class Printf
+	class Printf //包含在ice行不通
 	{
 		string vison();
 		Printer prt1;

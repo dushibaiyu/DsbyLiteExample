@@ -4,10 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    ../helloserver/tmp.cpp
+    ../tmp.cpp
 
 HEADERS += \
-    ../helloserver/tmp.h
+    ../tmp.h
 #添加ICE的库
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../SDK/Ice-3.5.1/lib/vc110/ -lice
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../SDK/Ice-3.5.1/lib/vc110/ -liced

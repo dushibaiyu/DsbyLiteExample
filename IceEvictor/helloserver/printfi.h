@@ -1,7 +1,7 @@
 ﻿#ifndef PRINTFI_H
 #define PRINTFI_H
 
-#include "tmp.h"
+#include "../tmp.h"
 #include "printeri.h"
 #include <string>
 

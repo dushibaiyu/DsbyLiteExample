@@ -1,4 +1,4 @@
-// **********************************************************************
+﻿// **********************************************************************
 //
 // Copyright (c) 2003-2013 ZeroC, Inc. All rights reserved.
 //
@@ -18,7 +18,7 @@
 // </auto-generated>
 //
 
-#include <tmp.h>
+#include "tmp.h"
 #include <Ice/LocalException.h>
 #include <Ice/ObjectFactory.h>
 #include <Ice/BasicStream.h>
@@ -44,7 +44,13 @@ const ::std::string __Demo__Printer__printString_name = "printString";
 
 const ::std::string __Demo__Printer2__printString2_name = "printString2";
 
+const ::std::string __Demo__callBack__set_name = "set";
+
 const ::std::string __Demo__Printer3__printString3_name = "printString3";
+
+const ::std::string __Demo__Printer3__setInt_name = "setInt";
+
+const ::std::string __Demo__Printer3__setCall_name = "setCall";
 
 const ::std::string __Demo__Printf__vison_name = "vison";
 
@@ -233,6 +239,98 @@ IceProxy::Demo::Printer2::__newInstance() const
 {
     return new Printer2;
 }
+::IceProxy::Ice::Object* ::IceProxy::Demo::upCast(::IceProxy::Demo::callBack* p) { return p; }
+
+void
+::IceProxy::Demo::__read(::IceInternal::BasicStream* __is, ::IceInternal::ProxyHandle< ::IceProxy::Demo::callBack>& v)
+{
+    ::Ice::ObjectPrx proxy;
+    __is->read(proxy);
+    if(!proxy)
+    {
+        v = 0;
+    }
+    else
+    {
+        v = new ::IceProxy::Demo::callBack;
+        v->__copyFrom(proxy);
+    }
+}
+
+void
+IceProxy::Demo::callBack::set(::Ice::Int i, const ::Ice::Context* __ctx)
+{
+    ::IceInternal::InvocationObserver __observer(this, __Demo__callBack__set_name, __ctx);
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::Demo::callBack* __del = dynamic_cast< ::IceDelegate::Demo::callBack*>(__delBase.get());
+            __del->set(i, __ctx, __observer);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex, __observer);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt, __observer);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::Demo::callBack::begin_set(::Ice::Int i, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __Demo__callBack__set_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__Demo__callBack__set_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__startWriteParams(::Ice::DefaultFormat);
+        __os->write(i);
+        __result->__endWriteParams();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::Demo::callBack::end_set(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __Demo__callBack__set_name);
+}
+
+const ::std::string&
+IceProxy::Demo::callBack::ice_staticId()
+{
+    return ::Demo::callBack::ice_staticId();
+}
+
+::IceInternal::Handle< ::IceDelegateM::Ice::Object>
+IceProxy::Demo::callBack::__createDelegateM()
+{
+    return ::IceInternal::Handle< ::IceDelegateM::Ice::Object>(new ::IceDelegateM::Demo::callBack);
+}
+
+::IceInternal::Handle< ::IceDelegateD::Ice::Object>
+IceProxy::Demo::callBack::__createDelegateD()
+{
+    return ::IceInternal::Handle< ::IceDelegateD::Ice::Object>(new ::IceDelegateD::Demo::callBack);
+}
+
+::IceProxy::Ice::Object*
+IceProxy::Demo::callBack::__newInstance() const
+{
+    return new callBack;
+}
 ::IceProxy::Ice::Object* ::IceProxy::Demo::upCast(::IceProxy::Demo::Printer3* p) { return p; }
 
 void
@@ -300,6 +398,108 @@ void
 IceProxy::Demo::Printer3::end_printString3(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __Demo__Printer3__printString3_name);
+}
+
+void
+IceProxy::Demo::Printer3::setInt(::Ice::Int j, const ::Ice::Context* __ctx)
+{
+    ::IceInternal::InvocationObserver __observer(this, __Demo__Printer3__setInt_name, __ctx);
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::Demo::Printer3* __del = dynamic_cast< ::IceDelegate::Demo::Printer3*>(__delBase.get());
+            __del->setInt(j, __ctx, __observer);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex, __observer);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt, __observer);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::Demo::Printer3::begin_setInt(::Ice::Int j, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __Demo__Printer3__setInt_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__Demo__Printer3__setInt_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__startWriteParams(::Ice::DefaultFormat);
+        __os->write(j);
+        __result->__endWriteParams();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::Demo::Printer3::end_setInt(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __Demo__Printer3__setInt_name);
+}
+
+void
+IceProxy::Demo::Printer3::setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context* __ctx)
+{
+    ::IceInternal::InvocationObserver __observer(this, __Demo__Printer3__setCall_name, __ctx);
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::Demo::Printer3* __del = dynamic_cast< ::IceDelegate::Demo::Printer3*>(__delBase.get());
+            __del->setCall(cb, __ctx, __observer);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex, __observer);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt, __observer);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::Demo::Printer3::begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __Demo__Printer3__setCall_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__Demo__Printer3__setCall_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__startWriteParams(::Ice::DefaultFormat);
+        __os->write(cb);
+        __result->__endWriteParams();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::Demo::Printer3::end_setCall(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __Demo__Printer3__setCall_name);
 }
 
 const ::std::string&
@@ -523,6 +723,46 @@ IceDelegateM::Demo::Printer2::printString2(const ::std::string& s, const ::Ice::
 }
 
 void
+IceDelegateM::Demo::callBack::set(::Ice::Int i, const ::Ice::Context* __context, ::IceInternal::InvocationObserver& __observer)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __Demo__callBack__set_name, ::Ice::Normal, __context, __observer);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.startWriteParams(::Ice::DefaultFormat);
+        __os->write(i);
+        __og.endWriteParams();
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    bool __ok = __og.invoke();
+    if(__og.hasResponse())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.readEmptyParams();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
+void
 IceDelegateM::Demo::Printer3::printString3(const ::std::string& s, const ::Ice::Context* __context, ::IceInternal::InvocationObserver& __observer)
 {
     ::IceInternal::Outgoing __og(__handler.get(), __Demo__Printer3__printString3_name, ::Ice::Normal, __context, __observer);
@@ -530,6 +770,86 @@ IceDelegateM::Demo::Printer3::printString3(const ::std::string& s, const ::Ice::
     {
         ::IceInternal::BasicStream* __os = __og.startWriteParams(::Ice::DefaultFormat);
         __os->write(s);
+        __og.endWriteParams();
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    bool __ok = __og.invoke();
+    if(__og.hasResponse())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.readEmptyParams();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
+void
+IceDelegateM::Demo::Printer3::setInt(::Ice::Int j, const ::Ice::Context* __context, ::IceInternal::InvocationObserver& __observer)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __Demo__Printer3__setInt_name, ::Ice::Normal, __context, __observer);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.startWriteParams(::Ice::DefaultFormat);
+        __os->write(j);
+        __og.endWriteParams();
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    bool __ok = __og.invoke();
+    if(__og.hasResponse())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.readEmptyParams();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
+void
+IceDelegateM::Demo::Printer3::setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context* __context, ::IceInternal::InvocationObserver& __observer)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __Demo__Printer3__setCall_name, ::Ice::Normal, __context, __observer);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.startWriteParams(::Ice::DefaultFormat);
+        __os->write(cb);
         __og.endWriteParams();
     }
     catch(const ::Ice::LocalException& __ex)
@@ -723,6 +1043,70 @@ IceDelegateD::Demo::Printer2::printString2(const ::std::string& s, const ::Ice::
 }
 
 void
+IceDelegateD::Demo::callBack::set(::Ice::Int i, const ::Ice::Context* __context, ::IceInternal::InvocationObserver&)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(::Ice::Int __p_i, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_i(__p_i)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::Demo::callBack* servant = dynamic_cast< ::Demo::callBack*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->set(_m_i, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        ::Ice::Int _m_i;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __Demo__callBack__set_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(i, __current);
+        try
+        {
+            __direct.getServant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
+void
 IceDelegateD::Demo::Printer3::printString3(const ::std::string& s, const ::Ice::Context* __context, ::IceInternal::InvocationObserver&)
 {
     class _DirectI : public ::IceInternal::Direct
@@ -757,6 +1141,134 @@ IceDelegateD::Demo::Printer3::printString3(const ::std::string& s, const ::Ice::
     try
     {
         _DirectI __direct(s, __current);
+        try
+        {
+            __direct.getServant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
+void
+IceDelegateD::Demo::Printer3::setInt(::Ice::Int j, const ::Ice::Context* __context, ::IceInternal::InvocationObserver&)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(::Ice::Int __p_j, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_j(__p_j)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::Demo::Printer3* servant = dynamic_cast< ::Demo::Printer3*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->setInt(_m_j, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        ::Ice::Int _m_j;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __Demo__Printer3__setInt_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(j, __current);
+        try
+        {
+            __direct.getServant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
+void
+IceDelegateD::Demo::Printer3::setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context* __context, ::IceInternal::InvocationObserver&)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(const ::Demo::callBackPrx& __p_cb, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_cb(__p_cb)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::Demo::Printer3* servant = dynamic_cast< ::Demo::Printer3*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->setCall(_m_cb, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        const ::Demo::callBackPrx& _m_cb;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __Demo__Printer3__setCall_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(cb, __current);
         try
         {
             __direct.getServant()->__collocDispatch(__direct);
@@ -1098,6 +1610,129 @@ Demo::__patch(Printer2Ptr& handle, const ::Ice::ObjectPtr& v)
     }
 }
 
+::Ice::Object* Demo::upCast(::Demo::callBack* p) { return p; }
+
+namespace
+{
+const ::std::string __Demo__callBack_ids[2] =
+{
+    "::Demo::callBack",
+    "::Ice::Object"
+};
+
+}
+
+bool
+Demo::callBack::ice_isA(const ::std::string& _s, const ::Ice::Current&) const
+{
+    return ::std::binary_search(__Demo__callBack_ids, __Demo__callBack_ids + 2, _s);
+}
+
+::std::vector< ::std::string>
+Demo::callBack::ice_ids(const ::Ice::Current&) const
+{
+    return ::std::vector< ::std::string>(&__Demo__callBack_ids[0], &__Demo__callBack_ids[2]);
+}
+
+const ::std::string&
+Demo::callBack::ice_id(const ::Ice::Current&) const
+{
+    return __Demo__callBack_ids[0];
+}
+
+const ::std::string&
+Demo::callBack::ice_staticId()
+{
+    return __Demo__callBack_ids[0];
+}
+
+::Ice::DispatchStatus
+Demo::callBack::___set(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.startReadParams();
+    ::Ice::Int i;
+    __is->read(i);
+    __inS.endReadParams();
+    set(i, __current);
+    __inS.__writeEmptyParams();
+    return ::Ice::DispatchOK;
+}
+
+namespace
+{
+const ::std::string __Demo__callBack_all[] =
+{
+    "ice_id",
+    "ice_ids",
+    "ice_isA",
+    "ice_ping",
+    "set"
+};
+
+}
+
+::Ice::DispatchStatus
+Demo::callBack::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
+{
+    ::std::pair< const ::std::string*, const ::std::string*> r = ::std::equal_range(__Demo__callBack_all, __Demo__callBack_all + 5, current.operation);
+    if(r.first == r.second)
+    {
+        throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
+    }
+
+    switch(r.first - __Demo__callBack_all)
+    {
+        case 0:
+        {
+            return ___ice_id(in, current);
+        }
+        case 1:
+        {
+            return ___ice_ids(in, current);
+        }
+        case 2:
+        {
+            return ___ice_isA(in, current);
+        }
+        case 3:
+        {
+            return ___ice_ping(in, current);
+        }
+        case 4:
+        {
+            return ___set(in, current);
+        }
+    }
+
+    assert(false);
+    throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
+}
+
+void
+Demo::callBack::__writeImpl(::IceInternal::BasicStream* __os) const
+{
+    __os->startWriteSlice(ice_staticId(), -1, true);
+    __os->endWriteSlice();
+}
+
+void
+Demo::callBack::__readImpl(::IceInternal::BasicStream* __is)
+{
+    __is->startReadSlice();
+    __is->endReadSlice();
+}
+
+void 
+Demo::__patch(callBackPtr& handle, const ::Ice::ObjectPtr& v)
+{
+    handle = ::Demo::callBackPtr::dynamicCast(v);
+    if(v && !handle)
+    {
+        IceInternal::Ex::throwUOE(::Demo::callBack::ice_staticId(), v);
+    }
+}
+
 ::Ice::Object* Demo::upCast(::Demo::Printer3* p) { return p; }
 
 namespace
@@ -1149,6 +1784,32 @@ Demo::Printer3::___printString3(::IceInternal::Incoming& __inS, const ::Ice::Cur
     return ::Ice::DispatchOK;
 }
 
+::Ice::DispatchStatus
+Demo::Printer3::___setInt(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.startReadParams();
+    ::Ice::Int j;
+    __is->read(j);
+    __inS.endReadParams();
+    setInt(j, __current);
+    __inS.__writeEmptyParams();
+    return ::Ice::DispatchOK;
+}
+
+::Ice::DispatchStatus
+Demo::Printer3::___setCall(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.startReadParams();
+    ::Demo::callBackPrx cb;
+    __is->read(cb);
+    __inS.endReadParams();
+    setCall(cb, __current);
+    __inS.__writeEmptyParams();
+    return ::Ice::DispatchOK;
+}
+
 namespace
 {
 const ::std::string __Demo__Printer3_all[] =
@@ -1159,7 +1820,9 @@ const ::std::string __Demo__Printer3_all[] =
     "ice_ping",
     "printString",
     "printString2",
-    "printString3"
+    "printString3",
+    "setCall",
+    "setInt"
 };
 
 }
@@ -1167,7 +1830,7 @@ const ::std::string __Demo__Printer3_all[] =
 ::Ice::DispatchStatus
 Demo::Printer3::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< const ::std::string*, const ::std::string*> r = ::std::equal_range(__Demo__Printer3_all, __Demo__Printer3_all + 7, current.operation);
+    ::std::pair< const ::std::string*, const ::std::string*> r = ::std::equal_range(__Demo__Printer3_all, __Demo__Printer3_all + 9, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -1202,6 +1865,14 @@ Demo::Printer3::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& cu
         case 6:
         {
             return ___printString3(in, current);
+        }
+        case 7:
+        {
+            return ___setCall(in, current);
+        }
+        case 8:
+        {
+            return ___setInt(in, current);
         }
     }
 

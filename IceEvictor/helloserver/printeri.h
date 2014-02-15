@@ -1,7 +1,7 @@
-#ifndef PRINTERI_H
+﻿#ifndef PRINTERI_H
 #define PRINTERI_H
 
-#include "tmp.h"
+#include "../tmp.h"
 
 class PrinterI : public Demo::Printer
 {
@@ -26,6 +26,12 @@ public:
     void printString2(const ::std::string&, const Ice::Current &);
 
     void printString3(const ::std::string&, const Ice::Current &);
+
+    virtual void setCall(const ::Demo::callBackPrx& cb, const ::Ice::Current&);
+    virtual void setInt(::Ice::Int, const ::Ice::Current&);
+
+protected:
+    ::Demo::callBackPrx cb;
 };
 typedef IceUtil::Handle<Printer3I> PrinterI3ptr;
 

@@ -63,6 +63,10 @@ class Printer2;
 void __read(::IceInternal::BasicStream*, ::IceInternal::ProxyHandle< ::IceProxy::Demo::Printer2>&);
 ::IceProxy::Ice::Object* upCast(::IceProxy::Demo::Printer2*);
 
+class callBack;
+void __read(::IceInternal::BasicStream*, ::IceInternal::ProxyHandle< ::IceProxy::Demo::callBack>&);
+::IceProxy::Ice::Object* upCast(::IceProxy::Demo::callBack*);
+
 class Printer3;
 void __read(::IceInternal::BasicStream*, ::IceInternal::ProxyHandle< ::IceProxy::Demo::Printer3>&);
 ::IceProxy::Ice::Object* upCast(::IceProxy::Demo::Printer3*);
@@ -94,6 +98,14 @@ typedef ::IceInternal::Handle< ::Demo::Printer2> Printer2Ptr;
 typedef ::IceInternal::ProxyHandle< ::IceProxy::Demo::Printer2> Printer2Prx;
 void __patch(Printer2Ptr&, const ::Ice::ObjectPtr&);
 
+class callBack;
+bool operator==(const callBack&, const callBack&);
+bool operator<(const callBack&, const callBack&);
+::Ice::Object* upCast(::Demo::callBack*);
+typedef ::IceInternal::Handle< ::Demo::callBack> callBackPtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::Demo::callBack> callBackPrx;
+void __patch(callBackPtr&, const ::Ice::ObjectPtr&);
+
 class Printer3;
 bool operator==(const Printer3&, const Printer3&);
 bool operator<(const Printer3&, const Printer3&);
@@ -121,8 +133,17 @@ typedef ::IceUtil::Handle< Callback_Printer_printString_Base> Callback_Printer_p
 class Callback_Printer2_printString2_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_Printer2_printString2_Base> Callback_Printer2_printString2Ptr;
 
+class Callback_callBack_set_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_callBack_set_Base> Callback_callBack_setPtr;
+
 class Callback_Printer3_printString3_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_Printer3_printString3_Base> Callback_Printer3_printString3Ptr;
+
+class Callback_Printer3_setInt_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_Printer3_setInt_Base> Callback_Printer3_setIntPtr;
+
+class Callback_Printer3_setCall_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_Printer3_setCall_Base> Callback_Printer3_setCallPtr;
 
 class Callback_Printf_vison_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_Printf_vison_Base> Callback_Printf_visonPtr;
@@ -501,6 +522,189 @@ private:
     virtual ::IceProxy::Ice::Object* __newInstance() const;
 };
 
+class callBack : virtual public ::IceProxy::Ice::Object
+{
+public:
+
+    void set(::Ice::Int i)
+    {
+        set(i, 0);
+    }
+    void set(::Ice::Int i, const ::Ice::Context& __ctx)
+    {
+        set(i, &__ctx);
+    }
+#ifdef ICE_CPP11
+    ::Ice::AsyncResultPtr
+    begin_set(::Ice::Int i, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_set(i, 0, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent));
+    }
+    ::Ice::AsyncResultPtr
+    begin_set(::Ice::Int i, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_set(i, 0, ::Ice::newCallback(__completed, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_set(::Ice::Int i, const ::Ice::Context& __ctx, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_set(i, &__ctx, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_set(::Ice::Int i, const ::Ice::Context& __ctx, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_set(i, &__ctx, ::Ice::newCallback(__completed, __sent));
+    }
+#endif
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i)
+    {
+        return begin_set(i, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i, const ::Ice::Context& __ctx)
+    {
+        return begin_set(i, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_set(i, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_set(i, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i, const ::Demo::Callback_callBack_setPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_set(i, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int i, const ::Ice::Context& __ctx, const ::Demo::Callback_callBack_setPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_set(i, &__ctx, __del, __cookie);
+    }
+
+    void end_set(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void set(::Ice::Int, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_set(::Ice::Int, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+    
+    ::IceInternal::ProxyHandle<callBack> ice_context(const ::Ice::Context& __context) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_context(__context).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_adapterId(const ::std::string& __id) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_adapterId(__id).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_endpoints(const ::Ice::EndpointSeq& __endpoints) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_endpoints(__endpoints).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_locatorCacheTimeout(int __timeout) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_locatorCacheTimeout(__timeout).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_connectionCached(bool __cached) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_connectionCached(__cached).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_endpointSelection(::Ice::EndpointSelectionType __est) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_endpointSelection(__est).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_secure(bool __secure) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_secure(__secure).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_preferSecure(bool __preferSecure) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_preferSecure(__preferSecure).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_router(const ::Ice::RouterPrx& __router) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_router(__router).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_locator(const ::Ice::LocatorPrx& __locator) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_locator(__locator).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_collocationOptimized(bool __co) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_collocationOptimized(__co).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_twoway() const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_twoway().get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_oneway() const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_oneway().get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_batchOneway() const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_batchOneway().get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_datagram() const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_datagram().get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_batchDatagram() const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_batchDatagram().get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_compress(bool __compress) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_compress(__compress).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_timeout(int __timeout) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_timeout(__timeout).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_connectionId(const ::std::string& __id) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_connectionId(__id).get());
+    }
+    
+    ::IceInternal::ProxyHandle<callBack> ice_encodingVersion(const ::Ice::EncodingVersion& __v) const
+    {
+        return dynamic_cast<callBack*>(::IceProxy::Ice::Object::ice_encodingVersion(__v).get());
+    }
+    
+    static const ::std::string& ice_staticId();
+
+private: 
+
+    virtual ::IceInternal::Handle< ::IceDelegateM::Ice::Object> __createDelegateM();
+    virtual ::IceInternal::Handle< ::IceDelegateD::Ice::Object> __createDelegateD();
+    virtual ::IceProxy::Ice::Object* __newInstance() const;
+};
+
 class Printer3 : virtual public ::IceProxy::Demo::Printer,
                  virtual public ::IceProxy::Demo::Printer2
 {
@@ -573,6 +777,146 @@ private:
 
     void printString3(const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_printString3(const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void setInt(::Ice::Int j)
+    {
+        setInt(j, 0);
+    }
+    void setInt(::Ice::Int j, const ::Ice::Context& __ctx)
+    {
+        setInt(j, &__ctx);
+    }
+#ifdef ICE_CPP11
+    ::Ice::AsyncResultPtr
+    begin_setInt(::Ice::Int j, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_setInt(j, 0, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent));
+    }
+    ::Ice::AsyncResultPtr
+    begin_setInt(::Ice::Int j, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_setInt(j, 0, ::Ice::newCallback(__completed, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_setInt(::Ice::Int j, const ::Ice::Context& __ctx, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_setInt(j, &__ctx, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_setInt(::Ice::Int j, const ::Ice::Context& __ctx, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_setInt(j, &__ctx, ::Ice::newCallback(__completed, __sent));
+    }
+#endif
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j)
+    {
+        return begin_setInt(j, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j, const ::Ice::Context& __ctx)
+    {
+        return begin_setInt(j, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setInt(j, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setInt(j, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j, const ::Demo::Callback_Printer3_setIntPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setInt(j, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int j, const ::Ice::Context& __ctx, const ::Demo::Callback_Printer3_setIntPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setInt(j, &__ctx, __del, __cookie);
+    }
+
+    void end_setInt(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void setInt(::Ice::Int, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_setInt(::Ice::Int, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void setCall(const ::Demo::callBackPrx& cb)
+    {
+        setCall(cb, 0);
+    }
+    void setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx)
+    {
+        setCall(cb, &__ctx);
+    }
+#ifdef ICE_CPP11
+    ::Ice::AsyncResultPtr
+    begin_setCall(const ::Demo::callBackPrx& cb, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_setCall(cb, 0, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent));
+    }
+    ::Ice::AsyncResultPtr
+    begin_setCall(const ::Demo::callBackPrx& cb, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_setCall(cb, 0, ::Ice::newCallback(__completed, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx, const ::IceInternal::Function<void ()>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return begin_setCall(cb, &__ctx, new ::IceInternal::Cpp11FnOnewayCallbackNC(__response, __exception, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_setCall(cb, &__ctx, ::Ice::newCallback(__completed, __sent));
+    }
+#endif
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb)
+    {
+        return begin_setCall(cb, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx)
+    {
+        return begin_setCall(cb, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setCall(cb, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setCall(cb, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb, const ::Demo::Callback_Printer3_setCallPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setCall(cb, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx& cb, const ::Ice::Context& __ctx, const ::Demo::Callback_Printer3_setCallPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_setCall(cb, &__ctx, __del, __cookie);
+    }
+
+    void end_setCall(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void setCall(const ::Demo::callBackPrx&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_setCall(const ::Demo::callBackPrx&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -935,12 +1279,23 @@ public:
     virtual void printString2(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&) = 0;
 };
 
+class callBack : virtual public ::IceDelegate::Ice::Object
+{
+public:
+
+    virtual void set(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&) = 0;
+};
+
 class Printer3 : virtual public ::IceDelegate::Demo::Printer,
                  virtual public ::IceDelegate::Demo::Printer2
 {
 public:
 
     virtual void printString3(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&) = 0;
+
+    virtual void setInt(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&) = 0;
+
+    virtual void setCall(const ::Demo::callBackPrx&, const ::Ice::Context*, ::IceInternal::InvocationObserver&) = 0;
 };
 
 class Printf : virtual public ::IceDelegate::Ice::Object
@@ -976,6 +1331,14 @@ public:
     virtual void printString2(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
 };
 
+class callBack : virtual public ::IceDelegate::Demo::callBack,
+                 virtual public ::IceDelegateM::Ice::Object
+{
+public:
+
+    virtual void set(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+};
+
 class Printer3 : virtual public ::IceDelegate::Demo::Printer3,
                  virtual public ::IceDelegateM::Demo::Printer,
                  virtual public ::IceDelegateM::Demo::Printer2
@@ -983,6 +1346,10 @@ class Printer3 : virtual public ::IceDelegate::Demo::Printer3,
 public:
 
     virtual void printString3(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+
+    virtual void setInt(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+
+    virtual void setCall(const ::Demo::callBackPrx&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
 };
 
 class Printf : virtual public ::IceDelegate::Demo::Printf,
@@ -1019,6 +1386,14 @@ public:
     virtual void printString2(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
 };
 
+class callBack : virtual public ::IceDelegate::Demo::callBack,
+                 virtual public ::IceDelegateD::Ice::Object
+{
+public:
+
+    virtual void set(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+};
+
 class Printer3 : virtual public ::IceDelegate::Demo::Printer3,
                  virtual public ::IceDelegateD::Demo::Printer,
                  virtual public ::IceDelegateD::Demo::Printer2
@@ -1026,6 +1401,10 @@ class Printer3 : virtual public ::IceDelegate::Demo::Printer3,
 public:
 
     virtual void printString3(const ::std::string&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+
+    virtual void setInt(::Ice::Int, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
+
+    virtual void setCall(const ::Demo::callBackPrx&, const ::Ice::Context*, ::IceInternal::InvocationObserver&);
 };
 
 class Printf : virtual public ::IceDelegate::Demo::Printf,
@@ -1115,6 +1494,42 @@ inline bool operator<(const Printer2& l, const Printer2& r)
     return static_cast<const ::Ice::Object&>(l) < static_cast<const ::Ice::Object&>(r);
 }
 
+class callBack : virtual public ::Ice::Object
+{
+public:
+
+    typedef callBackPrx ProxyType;
+    typedef callBackPtr PointerType;
+
+    virtual bool ice_isA(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) const;
+    virtual ::std::vector< ::std::string> ice_ids(const ::Ice::Current& = ::Ice::Current()) const;
+    virtual const ::std::string& ice_id(const ::Ice::Current& = ::Ice::Current()) const;
+    static const ::std::string& ice_staticId();
+
+    virtual void set(::Ice::Int, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___set(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
+
+protected:
+    virtual void __writeImpl(::IceInternal::BasicStream*) const;
+    virtual void __readImpl(::IceInternal::BasicStream*);
+    #ifdef __SUNPRO_CC
+    using ::Ice::Object::__writeImpl;
+    using ::Ice::Object::__readImpl;
+    #endif
+};
+
+inline bool operator==(const callBack& l, const callBack& r)
+{
+    return static_cast<const ::Ice::Object&>(l) == static_cast<const ::Ice::Object&>(r);
+}
+
+inline bool operator<(const callBack& l, const callBack& r)
+{
+    return static_cast<const ::Ice::Object&>(l) < static_cast<const ::Ice::Object&>(r);
+}
+
 class Printer3 : virtual public ::Demo::Printer,
                  virtual public ::Demo::Printer2
 {
@@ -1130,6 +1545,12 @@ public:
 
     virtual void printString3(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___printString3(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void setInt(::Ice::Int, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___setInt(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void setCall(const ::Demo::callBackPrx&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___setCall(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
 
@@ -1381,6 +1802,88 @@ newCallback_Printer2_printString2(T* instance, void (T::*excb)(const ::Ice::Exce
 }
 
 template<class T>
+class CallbackNC_callBack_set : public Callback_callBack_set_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_callBack_set(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_callBack_setPtr
+newCallback_callBack_set(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_callBack_set<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_callBack_setPtr
+newCallback_callBack_set(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_callBack_set<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_callBack_setPtr
+newCallback_callBack_set(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_callBack_set<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_callBack_setPtr
+newCallback_callBack_set(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_callBack_set<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_callBack_set : public Callback_callBack_set_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_callBack_set(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_callBack_setPtr
+newCallback_callBack_set(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_callBack_set<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_callBack_setPtr
+newCallback_callBack_set(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_callBack_set<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_callBack_setPtr
+newCallback_callBack_set(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_callBack_set<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_callBack_setPtr
+newCallback_callBack_set(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_callBack_set<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
 class CallbackNC_Printer3_printString3 : public Callback_Printer3_printString3_Base, public ::IceInternal::OnewayCallbackNC<T>
 {
 public:
@@ -1460,6 +1963,170 @@ template<class T, typename CT> Callback_Printer3_printString3Ptr
 newCallback_Printer3_printString3(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_Printer3_printString3<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_Printer3_setInt : public Callback_Printer3_setInt_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_Printer3_setInt(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setInt<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setInt<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setInt<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setInt<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_Printer3_setInt : public Callback_Printer3_setInt_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_Printer3_setInt(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setInt<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setInt<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setInt<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setIntPtr
+newCallback_Printer3_setInt(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setInt<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_Printer3_setCall : public Callback_Printer3_setCall_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_Printer3_setCall(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setCall<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setCall<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setCall<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_Printer3_setCall<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_Printer3_setCall : public Callback_Printer3_setCall_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_Printer3_setCall(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setCall<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setCall<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setCall<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_Printer3_setCallPtr
+newCallback_Printer3_setCall(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_Printer3_setCall<T, CT>(instance, 0, excb, sentcb);
 }
 
 template<class T>

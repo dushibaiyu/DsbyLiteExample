@@ -4,18 +4,18 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    tmp.cpp \
     EvictorBase.cpp \
     printeri.cpp \
-    printfi.cpp
+    printfi.cpp \
+    ../tmp.cpp
 
 HEADERS += \
-    tmp.h \
     iceServer.h \
     EvictorBase.h \
     myevictorbase.h \
     printeri.h \
-    printfi.h
+    printfi.h \
+    ../tmp.h
 
 #添加ICE的库
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../SDK/Ice-3.5.1/lib/vc110/ -lice

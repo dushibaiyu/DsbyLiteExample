@@ -22,7 +22,7 @@ bool server::start(int , char * [], int &)
 {
     try
     {
-        _adapter = communicator()->createObjectAdapterWithEndpoints("pritf","default -h localhost -p 11111");
+        _adapter = communicator()->createObjectAdapterWithEndpoints("pritf","default -p 11111");
         _adapter->add(new /*PrintfI,communicator()->stringToIdentity("hello"));*/Printer3I,communicator()->stringToIdentity("hello"));
         _adapter->addServantLocator(new myEvictorBase(3),"");//添加逐出器/定位器
         _adapter->activate();
