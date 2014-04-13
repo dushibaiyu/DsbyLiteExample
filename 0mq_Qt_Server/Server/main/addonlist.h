@@ -2,7 +2,7 @@
 #define ADDONLIST_H
 
 #include "datahandleinterface.h"
-#include <QList>
+#include <QMultiMap>
 
 class AddonList
 {
@@ -10,7 +10,7 @@ public:
     ~AddonList(){}
     static AddonList & getClass();
 
-    DataHandleInterface * const & at(int i) const;
+    QList<DataHandleInterface *> getInterface(const QString & key) const;
     int getsize() const;
 
 protected:
@@ -18,8 +18,7 @@ protected:
 
 private:
     AddonList();
-    QList<DataHandleInterface* > list;
-    int size;
+    QMultiMap<QString,DataHandleInterface* > addonMap;
 };
 
 #endif // ADDONLIST_H

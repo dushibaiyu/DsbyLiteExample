@@ -4,23 +4,22 @@
 AddonList::AddonList()
 {
     loadAddon();
-    size = list.size();
-}
-
-DataHandleInterface* const & AddonList::at(int i) const
-{
-    return list.at(i);
-}
-
-int AddonList::getsize() const
-{
-    return size;
 }
 
 AddonList & AddonList::getClass()
 {
     static AddonList addon;
     return addon;
+}
+
+QList<DataHandleInterface *> AddonList::getInterface(const QString & key) const
+{
+    return addonMap.values(key);
+}
+
+int AddonList::getsize() const
+{
+    return addonMap.size();
 }
 
 void AddonList::loadAddon()
@@ -38,7 +37,11 @@ void AddonList::loadAddon()
             DataHandleInterface * dataInterface = qobject_cast<DataHandleInterface *>(plugin);
             if (dataInterface)
             {
-                list.append(dataInterface);
+                QStringList strl = dataInterface->getCommod();
+                for (int i = 0; i < strl.size(); ++i)
+                {
+                    addonMap.insert(strl.at(i),dataInterface);
+                }
             }
         }
     }

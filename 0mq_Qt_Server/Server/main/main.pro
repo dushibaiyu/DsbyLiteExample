@@ -42,3 +42,19 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010s
 
 win32:INCLUDEPATH += $$PWD/../../lib/Win32.VS2010sp1/zeromq4.04
 win32:DEPENDPATH += $$PWD/../../lib/Win32.VS2010sp1/zeromq4.04
+
+
+#win32: LIBS += -LE:/Libs/mongo/ -lmongoclient
+
+#INCLUDEPATH += E:/Libs/mongo
+#DEPENDPATH += E:/Libs/mongo
+
+#INCLUDEPATH += E:/SDK/boost_1_55_0
+#DEPENDPATH += E:/SDK/boost_1_55_0
+#win32:CONFIG(release, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_system-vc100-mt-gd-1_55
+#else:win32:CONFIG(debug, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_system-vc100-mt-1_55
+#win32:CONFIG(release, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_filesystem-vc100-mt-gd-1_55
+#else:win32:CONFIG(debug, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_filesystem-vc100-mt-1_55
+#win32:CONFIG(release, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_thread-vc100-mt-gd-1_55
+#else:win32:CONFIG(debug, debug|release): LIBS += -LE:/SDK/boost_1_55_0/lib32-msvc/ -lboost_thread-vc100-mt-1_55
+

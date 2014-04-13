@@ -11,7 +11,8 @@ class  Helloword  : public QObject,DataHandleInterface
     Q_INTERFACES(DataHandleInterface)
 public:
     Helloword();
-    bool datahandle(const QByteArray & data, QList<QByteArray> &);
+    QStringList getCommod() const;
+    void  datahandle(const QByteArray & data, QList<QByteArray> & sdata);
 };
 
 #endif // HELLOWORD_H
