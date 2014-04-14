@@ -16,13 +16,14 @@ CONFIG += C++11
 
 TEMPLATE = app
 
-
 SOURCES +=  \
     controlworker.cpp \
     workerclass.cpp \
     switchthread.cpp \
     addonlist.cpp \
-    main.cpp
+    main.cpp \
+    ../../common/proto/COMMObj.pb.cc \
+    configclass.cpp
 
 HEADERS += \
     ../../common/global.hpp \
@@ -32,10 +33,13 @@ HEADERS += \
     workerclass.h \
     switchthread.h \
     datahandleinterface.h \
-    addonlist.h
+    addonlist.h \
+    ../../common/proto/COMMObj.pb.h \
+    configclass.h
 
 win32:DESTDIR         = ../
 
+win32:DEFINES += PROTOBUF_USE_DLLS
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/zeromq4.04/lib/ -llibzmq
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/zeromq4.04/lib/ -llibzmq_d
@@ -43,6 +47,14 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010s
 win32:INCLUDEPATH += $$PWD/../../lib/Win32.VS2010sp1/zeromq4.04
 win32:DEPENDPATH += $$PWD/../../lib/Win32.VS2010sp1/zeromq4.04
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/release/ -llibprotobuf
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/debug/ -llibprotobuf
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/release/ -llibprotoc
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/debug/ -llibprotoc
+
+INCLUDEPATH += $$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5
+DEPENDPATH += $$PWD/../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5
 
 #win32: LIBS += -LE:/Libs/mongo/ -lmongoclient
 

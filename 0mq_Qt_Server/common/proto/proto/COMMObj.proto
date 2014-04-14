@@ -1,0 +1,25 @@
+package COMMObj;
+
+message COMMObj
+{
+  required string operate = 1; //请求的操作
+  required string username = 2;   //请求操作的用户
+  required string tab_name = 3;    //需要操作数据库的表名
+  required string site = 4; //地区
+  required string byte_data = 5;   //需要传输的字节数据
+  
+  repeated string field_name = 6;   //请求的字段名
+  optional int32 row_begin = 7 [default = -1];   //开始的行数
+  optional int32 row_size = 8 [default = -1];//得到的行数
+  optional string type = 9  [default = "obj"]; //传输格式，可以为obj或者json（后期可用），默认为obj(pbuf的message)
+}
+
+//message DataVector
+//{
+	//required string tab_type = 1;//表类型
+	//repeated （message） obj_array = 2;   //传输的数组
+//}
+
+//编译命令：拷贝protoc.exe到当前目录下cmd执行
+//protoc -I=./ --cpp_out=./ ./gbufConvertI.proto
+//D:\QtProjWorkspace\GbufConvertDll\protobuf>protoc -l=../protoFile/ --cpp_out=../protoFile/ ../protoFile/gbufConvertI.proto

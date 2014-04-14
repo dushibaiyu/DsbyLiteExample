@@ -14,7 +14,7 @@ class ControlWorker : public QObject
 {
     Q_OBJECT
 public:
-    explicit ControlWorker(const QString rou,QObject *parent = 0);
+    explicit ControlWorker(QObject *parent = 0);
     ~ControlWorker();
 signals:
     void startWorker();//工作类开始信号
@@ -28,7 +28,6 @@ public slots:
     void endAllWork();//结束所有处理
 private:
     bool istarted;//是否再接受数据
-    QString router;//连接地址
     QList<WorkerClass *> wklist;//工作着列表
     nzmqt::ZMQContext * context;
 };

@@ -7,10 +7,11 @@
  * 不能直接生成，仅限调度类使用。
 */
 
-
+//TODO:把数据库连接传到插件去
 #include <QObject>
 #include <QString>
 #include "../../common/nzmqt.hpp"
+#include "../../common/proto/COMMObj.pb.h"
 //#include <mongo/client/dbclient.h>
 
 //using namespace mongo;
@@ -33,12 +34,9 @@ public slots:
     void endWork();//结束处理，即断开与处理的接口
 
 protected:
-    explicit WorkerClass(nzmqt::ZMQContext * context, const QString & address,
-                         /*const QString & dbadd,*/ QObject *parent = 0);
-
+    explicit WorkerClass(nzmqt::ZMQContext * context,QObject *parent = 0);
+    inline bool COMMObj_Analyze(const QByteArray & data, COMMObj::COMMObj & obj);
 private:
-    QString address;//连接地址
-    QString dbAddress;//数据库连接地址
     nzmqt::ZMQSocket* socket;
     nzmqt::ZMQContext * context;
 //    DBClientConnection * db;

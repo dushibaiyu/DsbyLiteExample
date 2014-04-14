@@ -1,15 +1,16 @@
 ﻿#include "helloword.h"
 #include <QDebug>
+#include <QThread>
 
 Helloword::Helloword()
 {
 }
 
-void Helloword::datahandle(const QByteArray &data, QList<QByteArray> &sdata)
+void Helloword::datahandle(COMMObj::COMMObj & obj, QList<QByteArray> &data)
 {
-    qDebug () << data << "hello word";
-    sdata.append("hello");
-    sdata.append("word");
+    qDebug () << QThread::currentThreadId() << "hello word";
+    data.append(obj.operate().c_str());
+    data.append(obj.byte_data().c_str());
 }
 
 QStringList Helloword::getCommod() const

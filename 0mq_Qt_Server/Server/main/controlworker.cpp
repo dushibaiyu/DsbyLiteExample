@@ -1,8 +1,8 @@
 ﻿#include "controlworker.h"
 #include <QThread>
 
-ControlWorker::ControlWorker(const QString rou, QObject *parent) :
-    QObject(parent),istarted(false),router(rou)
+ControlWorker::ControlWorker(QObject *parent) :
+    QObject(parent),istarted(false)
 {
     context = nzmqt::createDefaultContext(this,2);
 }
@@ -54,7 +54,7 @@ void ControlWorker::setWork(int size)
     {
         for (int i =0 ; i< size ; ++i)
         {
-            WorkerClass * wk = new WorkerClass(context,router);
+            WorkerClass * wk = new WorkerClass(context);
             connect(this,&ControlWorker::startWorker,wk,&WorkerClass::beginWork);
             connect(this,&ControlWorker::endWorker,wk,&WorkerClass::endWork);
             QThread * th = new QThread(wk);

@@ -12,7 +12,7 @@ class  Helloword  : public QObject,DataHandleInterface
 public:
     Helloword();
     QStringList getCommod() const;
-    void  datahandle(const QByteArray & data, QList<QByteArray> & sdata);
+    void  datahandle(COMMObj::COMMObj & obj, QList<QByteArray> & data);
 };
 
 #endif // HELLOWORD_H

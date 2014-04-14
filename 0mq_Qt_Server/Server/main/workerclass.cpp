@@ -1,12 +1,12 @@
 ﻿#include "workerclass.h"
 #include <QThread>
 //#include <string>
-//#include <QDebug>
+#include <QDebug>
 #include "addonlist.h"
+#include "configclass.h"
 
-WorkerClass::WorkerClass(nzmqt::ZMQContext *context, const QString & str, QObject *parent) :
-    QObject(parent),address(str),/*dbAddress(dbadd),*/
-    context(context),socket(nullptr)
+WorkerClass::WorkerClass(nzmqt::ZMQContext *context, /*const QString &dbadd,*/ QObject *parent) :
+    QObject(parent),context(context),socket(nullptr)
 {
 //    db = new DBClientConnection(true,0,30);
 }
@@ -29,7 +29,7 @@ void WorkerClass::beginWork()
     //    {
     socket = context->createSocket(nzmqt::ZMQSocket::TYP_DEALER,this);
     connect(socket,&nzmqt::ZMQSocket::readyRead,this,&WorkerClass::exeData);
-    socket->connectTo(address);
+    socket->connectTo(ConfigClass::getClass().conAddress);
     //    }
     //    else
     //    {
@@ -45,12 +45,17 @@ void WorkerClass::exeData()
     bool ok = socket->receiveMessage(&identity);
     if (ok && socket->receiveMessage(&msg))//接收数据并判断数据是否到齐
     {
-        //TODO:解序列化数据，提取出命令
+        COMMObj::COMMObj obj;
+        if (!COMMObj_Analyze(msg.toByteArray(),obj))
+        {
+            return ;
+        }
         QList<QByteArray> data;
-        QList<DataHandleInterface *> list = AddonList::getClass().getInterface("hello");//根据命令查找出处理此命令的所有插件
+        //根据命令查找出处理此命令的所有插件
+        QList<DataHandleInterface *> list = AddonList::getClass().getInterface(QString::fromStdString(obj.operate()));
         for (int i = 0; i < list.size(); ++i)
         {
-            list.at(i)->datahandle(msg.toByteArray(),data);//发送给插件处理数据
+            list.at(i)->datahandle(obj,data);//发送给插件处理数据
             for (int j = 0; j < data.size(); ++j)//把处理结果发送给客户端。
             {
                 copied_id.copy(&identity);
@@ -71,4 +76,14 @@ void WorkerClass::endWork()
         delete socket;
         socket = nullptr;
     }
+}
+
+bool WorkerClass::COMMObj_Analyze(const QByteArray &data, COMMObj::COMMObj &obj)
+{
+    if (obj.ParseFromArray(data.data(),data.size()))
+    {
+        return true;
+    }
+    qDebug() << "序列化数据失败,data = " << data;
+    return false;
 }

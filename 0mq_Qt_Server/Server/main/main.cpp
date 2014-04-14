@@ -4,6 +4,7 @@
 #include "addonlist.h"
 #include "switchthread.h"
 #include "controlworker.h"
+#include "configclass.h"
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &context,const QString & msg)
 {
@@ -43,17 +44,18 @@ int main(int argc, char *argv[])
 {
     //    qInstallMessageHandler(customMessageHandler);
     QCoreApplication a(argc, argv);
-
     if (AddonList::getClass().getsize() <= 0)
     {
         qDebug() << "Erro: 没有插件！";
         return -1;
     }
-
     SwitchThread th;
-    th.start();
+    if (ConfigClass::getClass().isBind)
+    {
+        th.start();
+    }
 
-    ControlWorker  cw("tcp://127.0.0.1:6668");
+    ControlWorker  cw;
     cw.setWork(5);
     cw.beginWork();
 

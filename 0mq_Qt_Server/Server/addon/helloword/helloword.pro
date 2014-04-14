@@ -19,9 +19,16 @@ HEADERS += helloword.h
 
 TARGET          = $$qtLibraryTarget(hello)
 
+win32:DEFINES += PROTOBUF_USE_DLL
 win32:DESTDIR         = ../../plugins
 
 EXAMPLE_FILES = helloplugin.json
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/release/ -llibprotoc
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/debug/ -llibprotoc
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/release/ -llibprotobuf
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5/debug/ -llibprotobuf
 
+INCLUDEPATH += $$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5
+DEPENDPATH += $$PWD/../../../lib/Win32.VS2010sp1/GoogleProtocolBuffer2.5
