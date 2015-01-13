@@ -26,6 +26,7 @@ public:
 
     friend class ControlWorker;
 
+    void sentMessage(const QByteArray & data);
 signals:
 
 public slots:
@@ -39,6 +40,8 @@ protected:
 private:
     nzmqt::ZMQSocket* socket;
     nzmqt::ZMQContext * context;
+    nzmqt::ZMQMessage identity;
+    bool isOk;
 //    DBClientConnection * db;
 };
 

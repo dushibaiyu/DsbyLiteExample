@@ -9,6 +9,7 @@
 #include <list>
 #include <QByteArray>
 #include <QStringList>
+#include <functional>
 #include "../../common/proto/COMMObj.pb.h"
 
 class DataHandleInterface
@@ -16,7 +17,7 @@ class DataHandleInterface
 public:
     virtual ~DataHandleInterface(){}
     virtual QStringList getCommod() const = 0;//获取插件支持的命令
-    virtual void datahandle(COMMObj::COMMObj & obj,QList<QByteArray> & data/*,DBClientConnection * db*/) = 0;//这个函数会被多个线程并行调用。
+    virtual void datahandle(COMMObj::COMMObj & obj,QList<QByteArray> & data,std::function<void (const QByteArray &)> fun/*,DBClientConnection * db*/) = 0;//这个函数会被多个线程并行调用。
 };
 
 #define LTEDataInterface_iid "org.qt-project.Qt.LteDataHandle"
