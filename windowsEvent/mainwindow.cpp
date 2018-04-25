@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QKeyEvent>
@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     obj.setParent(this);
+    ui->textEdit->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
